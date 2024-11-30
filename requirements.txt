@@ -40,6 +40,7 @@ dvc-render==1.0.2
 dvc-s3==3.2.0
 dvc-studio-client==0.21.0
 dvc-task==0.40.2
+dvclive==3.48.0
 entrypoints==0.4
 filelock==3.16.1
 flatten-dict==0.4.2
@@ -79,6 +80,7 @@ pydot==3.0.2
 pygit2==1.16.0
 Pygments==2.18.0
 pygtrie==2.5.0
+pynvml==11.5.3
 pyparsing==3.2.0
 python-dateutil==2.9.0.post0
 pytz==2024.2

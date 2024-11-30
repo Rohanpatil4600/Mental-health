@@ -7,6 +7,11 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import joblib
+import yaml
+
+with open("params.yaml", "r") as file:
+    params = yaml.safe_load(file)
+
 
 # Load the preprocessed train and test datasets
 train = pd.read_csv('./data/interim/train_processed.csv')
@@ -30,7 +35,7 @@ X = train[categorical_cols + numerical_cols]
 y = train[target_col]
 
 # Splitting data into training and validation sets
-X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=params['train_model']['test_size'], random_state=42)
 
 # Define transformers for numerical and categorical columns
 numerical_transformer = StandardScaler()

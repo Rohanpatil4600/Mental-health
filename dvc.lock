@@ -1,0 +1,77 @@
+schema: '2.0'
+stages:
+  make_dataset:
+    cmd: python src/data/make_dataset.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: 8a3f4439f2d4256f31d20bea4f46d45e.dir
+      size: 262230
+      nfiles: 3
+    - path: src/data/make_dataset.py
+      hash: md5
+      md5: d84b6442a57ff4f7cd2437c3c68cf1c8
+      size: 751
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 103c0b0a96bf6a2fc5559f92ebabd4f0.dir
+      size: 270075
+      nfiles: 2
+  data_preprocessing:
+    cmd: python src/data/data_preprocessing.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 103c0b0a96bf6a2fc5559f92ebabd4f0.dir
+      size: 270075
+      nfiles: 2
+    - path: src/data/data_preprocessing.py
+      hash: md5
+      md5: e71e20207b0da70828a372ec1f7f6aa1
+      size: 3558
+    outs:
+    - path: data/interim
+      hash: md5
+      md5: 504598cce17643ac1cb2b165b26e6eef.dir
+      size: 295660
+      nfiles: 2
+  train_model:
+    cmd: python src/models/train_model.py
+    deps:
+    - path: data/interim
+      hash: md5
+      md5: 25650b691856ecbbc1829fc81f49976a.dir
+      size: 361032
+      nfiles: 3
+    - path: src/models/train_model.py
+      hash: md5
+      md5: 153791e54110f3b4464d4348f7562eec
+      size: 2839
+    outs:
+    - path: models/pipeline
+      hash: md5
+      md5: e8dc4e3249fdaf6420668f256e472a7e.dir
+      size: 3389663
+      nfiles: 1
+  evaluate_model:
+    cmd: python src/models/evaluate_model.py
+    deps:
+    - path: data/interim/test_with_predictions.csv
+      hash: md5
+      md5: 5ddefd4ac90cd70762f6a2686a311772
+      size: 65372
+    - path: models/pipeline/pipeline_model.joblib
+      hash: md5
+      md5: 42cba3a19886c5e9e92552ccdb2f9416
+      size: 3389663
+    - path: src/models/evaluate_model.py
+      hash: md5
+      md5: 8afdb01fdb6a42fd4160557023db62de
+      size: 1880
+    outs:
+    - path: models/metrics
+      hash: md5
+      md5: 88fe9aa197c689b65ee1e33cde0bcd5c.dir
+      size: 127
+      nfiles: 1

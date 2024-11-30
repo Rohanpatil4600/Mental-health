@@ -41,8 +41,8 @@ stages:
     deps:
     - path: data/interim
       hash: md5
-      md5: 25650b691856ecbbc1829fc81f49976a.dir
-      size: 361032
+      md5: 46718eda3c7cc4001507f48a9ef0044d.dir
+      size: 361038
       nfiles: 3
     - path: src/models/train_model.py
       hash: md5
@@ -51,27 +51,27 @@ stages:
     outs:
     - path: models/pipeline
       hash: md5
-      md5: e8dc4e3249fdaf6420668f256e472a7e.dir
-      size: 3389663
+      md5: fc3b4c15ac44c22a7a64caafd9818fee.dir
+      size: 3825023
       nfiles: 1
   evaluate_model:
     cmd: python src/models/evaluate_model.py
     deps:
     - path: data/interim/test_with_predictions.csv
       hash: md5
-      md5: 5ddefd4ac90cd70762f6a2686a311772
-      size: 65372
+      md5: 05b76f5ac6f83d149096e488de549009
+      size: 65378
     - path: models/pipeline/pipeline_model.joblib
       hash: md5
-      md5: 42cba3a19886c5e9e92552ccdb2f9416
-      size: 3389663
+      md5: 27af762ee44e76db86a42df1bc0faf69
+      size: 3825023
     - path: src/models/evaluate_model.py
       hash: md5
-      md5: 8afdb01fdb6a42fd4160557023db62de
-      size: 1880
+      md5: 29b3110b3b775e437949e96c643f061d
+      size: 2249
     outs:
     - path: models/metrics
       hash: md5
-      md5: 88fe9aa197c689b65ee1e33cde0bcd5c.dir
-      size: 127
+      md5: fec4db31b11ee8b94ad1fc371ca38dc1.dir
+      size: 126
       nfiles: 1

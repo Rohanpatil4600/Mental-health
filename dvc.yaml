@@ -23,8 +23,13 @@ stages:
   evaluate_model:
     cmd: python src/models/evaluate_model.py
     deps:
-      - src/models/evaluate_model.py
-      - models/pipeline/pipeline_model.joblib
-      - data/interim/test_with_predictions.csv
+    - src/models/evaluate_model.py
+    - models/pipeline/pipeline_model.joblib
+    - data/interim/test_with_predictions.csv
     outs:
-      - models/metrics
+    - models/metrics
+metrics:
+- dvclive/metrics.json
+plots:
+- dvclive/plots/metrics:
+    x: step
